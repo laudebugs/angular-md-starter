@@ -57,11 +57,4 @@ div.main-container {
         }
         transition: width 0.2s ease-in-out;
     }
-
-    .main-content {
-        margin-left: 200px;
-        &.collapsed {
-            margin-left: 75px;
-        }
-    }
 }
