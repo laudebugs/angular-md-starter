@@ -1,10 +1,10 @@
-import { Component, Inject, InjectionToken, Optional } from '@angular/core'
-import { IMovie, MovieToken } from '../movie.data'
-import { SharedModule } from '../../shared.module'
 import { NgOptimizedImage } from '@angular/common'
+import { Component } from '@angular/core'
+import { SharedModule } from '../../shared.module'
+import { IMovie } from '../movie.data'
 
 @Component({
-    selector: 'app-movie',
+    selector: 'movie',
     templateUrl: './movie.component.html',
     styleUrls: ['./movie.component.scss'],
     standalone: true,
@@ -12,7 +12,4 @@ import { NgOptimizedImage } from '@angular/common'
 })
 export class MovieComponent {
     movie!: IMovie
-    constructor(@Inject(MovieToken) @Optional() _movie: IMovie) {
-        if (_movie) this.movie = _movie
-    }
 }

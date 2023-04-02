@@ -18,7 +18,7 @@ export const MOVIES: IMovie[] = [
     {
         id: 1,
         title: 'The Shawshank Redemption',
-        poster: 'https://i.imgur.com/SuW2ZlC.jpg',
+        poster: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg',
         synopsis:
             'The Shawshank Redemption is a 1994 American drama film written and directed by Frank Darabont, based on the 1982 Stephen King novella Rita Hayworth and Shawshank Redemption.',
         genres: ['Crime', 'Drama'],
@@ -30,7 +30,7 @@ export const MOVIES: IMovie[] = [
     {
         id: 2,
         title: 'The Godfather',
-        poster: 'https://i.imgur.com/Uzvny9I.jpg',
+        poster: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
         synopsis:
             'The story, spanning 1945 to 1955, chronicles the family under the patriarch Vito Corleone (Brando), focusing on the transformation of one of his sons, Michael Corleone (Pacino), from reluctant family outsider to ruthless mafia boss.',
         genres: ['Crime', 'Drama'],
