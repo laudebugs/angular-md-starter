@@ -3,6 +3,7 @@
 > A repository to demonstrate the use of dynamic components in Angular
 
 [Read referenced article here](https://www.laudebugs.me/dev/dynamic-components-angular)
+[Stackblitz](https://stackblitz.com/edit/angular-ivy-lzyecr)
 
 ## Glossary
 
