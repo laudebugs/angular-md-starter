@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import '@angular/material/theming';
 
 $ng-starter-typography: mat-typography-config(
