@@ -1,5 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@use './assets/theme';
+@use '@angular/material' as mat;
+@import '@angular/material/theming';
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$ng-starter-typography: mat-typography-config(
+    $font-family: 'DM Sans, sans-serif',
+);
+
+@include angular-material-typography($ng-starter-typography);
+
+@include mat.core();
 
 html,
 body {
