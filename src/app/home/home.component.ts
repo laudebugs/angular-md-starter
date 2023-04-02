@@ -1,13 +1,4 @@
-import {
-    AfterContentInit,
-    AfterViewInit,
-    ChangeDetectorRef,
-    Component,
-    ComponentRef,
-    Injector,
-    ViewChild,
-    ViewContainerRef,
-} from '@angular/core'
+import { AfterContentInit, AfterViewInit, Component, ComponentRef, Injector, ViewChild, ViewContainerRef } from '@angular/core'
 import { MovieHostDirective } from '../core/directives/movie-host.directive'
 import { MovieComponent } from '../core/components/movie/movie.component'
 import { IMovie, MOVIES, MovieToken } from '../core/components/movie.data'
@@ -88,19 +79,19 @@ export class HomeComponent implements AfterViewInit, AfterContentInit {
         this.dynamicallyCreatedComponents.forEach((component) => component.destroy())
 
         /* Create the dynamic components */
-        movies.forEach((movie) => {
+        movies.forEach(({ movie, index }) => {
             const injector = Injector.create({
                 providers: [
                     {
                         provide: MovieToken,
-                        useValue: movie.movie,
+                        useValue: movie,
                     },
                 ],
                 parent: this.parentInjector,
             })
             const component = this.createComponentOptionsAnchor.createComponent(MovieWithRequiredDependencyComponent, {
                 injector,
-                index: movie.index,
+                index,
             })
             this.dynamicallyCreatedComponents.push(component)
         })
@@ -108,7 +99,11 @@ export class HomeComponent implements AfterViewInit, AfterContentInit {
 
     private dynamicallyCreatedComponents: Array<ComponentRef<MovieWithRequiredDependencyComponent>> = []
 
-    createComponentsForm!: FormGroup<{ movies: FormArray<FormGroup<CreateMovieForm>> }>
+    public createComponentsForm!: FormGroup<{ movies: FormArray<FormGroup<CreateMovieForm>> }>
+
+    /**
+     * Creates the movie form
+     */
     createForm() {
         this.createComponentsForm = this.formBuilder.nonNullable.group<{ movies: FormArray<FormGroup<CreateMovieForm>> }>({
             movies: new FormArray([
@@ -121,7 +116,10 @@ export class HomeComponent implements AfterViewInit, AfterContentInit {
         this.createComponentsForm.controls.movies
     }
 
-    addControl() {
+    /**
+     * Adds a movie form to the list
+     */
+    addMovie() {
         this.createComponentsForm.controls.movies.push(
             new FormGroup<CreateMovieForm>({
                 movie: this.formBuilder.nonNullable.control(
@@ -132,6 +130,10 @@ export class HomeComponent implements AfterViewInit, AfterContentInit {
         )
     }
 
+    /**
+     *
+     * @param index - the index of the movie to remove from the list
+     */
     removeControl(index: number) {
         this.createComponentsForm.controls.movies.removeAt(index)
     }
