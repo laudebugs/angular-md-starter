@@ -1,0 +1,44 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ movie.title }}</mat-card-title>
+        <mat-card-subtitle>{{ movie.year }}, {{ movie.director }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="poster">
+            <img [ngSrc]="movie.poster" [alt]="movie.title + ' poster'" fill />
+        </div>
+        <div class="metadata">
+            <p>
+                {{ movie.synopsis }}
+            </p>
+            <mat-chip-listbox>
+                <mat-chip *ngFor="let actor of movie.actors">
+                    {{ actor }}
+                </mat-chip>
+            </mat-chip-listbox>
+            <mat-divider></mat-divider>
+            <div class="showtimes">
+                <div class="showtime" *ngFor="let showtime of movie.hours">
+                    <span class="material-symbols-outlined"> schedule </span>
+                    {{ showtime }}
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="actions">
+                <button mat-stroked-button color="primary">
+                    <span class="button-details">
+                        <span class="material-symbols-outlined"> bookmark </span>
+                        Save For Later
+                    </span>
+                </button>
+                <button mat-stroked-button color="primary">
+                    <span class="button-details">
+                        <span class="material-symbols-outlined"> check_circle </span>
+                        Mark Watched
+                    </span>
+                </button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -40,8 +40,3 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-
-# Remove the lock file for the package manager of your choice
-pnpm-lock.yaml
-package-lock.json
-yarn.lock
