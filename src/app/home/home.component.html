@@ -1,4 +1,88 @@
-<ng-template [movieHost]></ng-template>
+<!-- Using the directive as an anchor to create the dynamic component -->
+<span class="using-anchor-directive-container">
+    <p class="host-note">🦩 Using a <strong>Directive</strong> as an anchor are placed at the bottom of the host component</p>
+    <ng-template movieHost></ng-template>
+</span>
+
+<span class="using-template-reference-container">
+    <!-- Using a template ref as an anchor -->
+    <p class="host-note">
+        🧬 Using a <strong>Template Reference Variable</strong> as an anchor are placed at the bottom of the host component
+    </p>
+    <ng-template #TemplateRefAnchor></ng-template>
+</span>
 
 <mat-divider></mat-divider>
-<p class="host-note">Dynamic Componponents attached to the host as an anchor are placed at the bottom of the host component</p>
+
+<span class="create-component-actions-container">
+    <p class="host-note">
+        🧿 Using a <strong><code>createComponent</code></strong> options such as <code>index</code> and <code>injector</code>
+    </p>
+
+    <span
+        class="create-component-actions"
+        *ngFor="let movieForm of createComponentsForm.controls.movies.controls; let index = index"
+    >
+        <mat-form-field appearance="outline">
+            <mat-label>Select Movie</mat-label>
+            <mat-select [formControl]="movieForm.controls.movie">
+                <mat-option *ngFor="let movie of movieList" [value]="movie">{{ movie.title }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Index</mat-label>
+            <input
+                [formControl]="movieForm.controls.index"
+                matInput
+                type="number"
+                [max]="createComponentsForm.controls.movies.controls.length - 1"
+                [min]="0"
+            />
+            <mat-error *ngIf="movieForm.controls.index.invalid">
+                Index must be between 0 and {{ createComponentsForm.controls.movies.controls.length - 1 }}
+            </mat-error>
+        </mat-form-field>
+        <span class="movie-actions">
+            <button
+                mat-icon-button
+                *ngIf="index > 0"
+                (click)="removeControl(index)"
+                [matTooltip]="'Remove ' + movieForm.controls.movie.value?.title"
+            >
+                <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+            <button
+                mat-raised-button
+                color="accent"
+                *ngIf="index === createComponentsForm.controls.movies.controls.length - 1"
+                (click)="addControl()"
+            >
+                <span class="button-container">
+                    <mat-icon>add</mat-icon>
+                    Add Movie
+                </span>
+            </button>
+            <button
+                mat-raised-button
+                color="primary"
+                *ngIf="index === createComponentsForm.controls.movies.controls.length - 1"
+                (click)="generateComponents()"
+            >
+                <span class="button-container">
+                    <span class="material-symbols-outlined"> design_services </span>
+                    Generate Components
+                </span>
+            </button>
+        </span>
+    </span>
+    <ng-template #UsingCreateComponentOptionsAnchor></ng-template>
+</span>
+
+<mat-divider></mat-divider>
+
+<p class="host-note">
+    🔆 Dynamic Componponents attached to the <strong>host element</strong> as an anchor are placed at the bottom of the host
+    component
+</p>
+<!-- Using the host as an anchor, elements will be placed at the bottom -->
